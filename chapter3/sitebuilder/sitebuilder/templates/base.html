@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}Rapid Prototypes{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+
+<body id="{% block body-id %}body{% endblock %}">
+
+{% block top-nav-wrapper %}
+<div class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+                    data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Rapid Prototypes</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li {% if slug == "index" %}class="nav-item active" {% else %}class="nav-item"{% endif %}>
+                    <a href="/">Home</a>
+                </li>
+                <li {% if slug == "contact" %}class="nav-item active" {% else %}class="nav-item"{% endif %}>
+                    <a href="{% url 'page' 'contact' %}">Contact</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto navbar-right">
+                <li {% if slug == "login" %} class="nav-item active" {% else %}class="nav-item"{% endif %}>
+                <a href="{% url 'page' 'login' %}">Login</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}{% endblock %}
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+
+</html>
